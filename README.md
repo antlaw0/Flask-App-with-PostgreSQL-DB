@@ -1,11 +1,18 @@
 # Flask-App-with-PostgreSQL-DB
->This Website is build on the Python Flask with PostgreSQL Database. Data Insertion and Fetching.
->**If you are Using libraries then run the pip freeze command**
->pip freeze > requirements.txt
->Create runtime.txt and write your python version i.e python-3.7.10
->echo web: gunicorn app:app > Procfile   #creating procfile
->Create an account on heroku  and also download the heroku cli
->##Write Following commands in pycharm/vscode
+
+This Website is build on the Python Flask with PostgreSQL Database. Data Insertion and Fetching.
+
+**If you are Using libraries then run the pip freeze command**
+
+pip freeze > requirements.txt
+
+Create runtime.txt and write your python version i.e python-3.7.10
+
+echo web: gunicorn app:app > Procfile   #creating procfile
+
+Create an account on heroku  and also download the heroku cli
+
+##Write Following commands in pycharm/vscode
 1. heroku login
 2. heroku create "project name"
 3. heroku addons:create heroku-postgresql:hobby-dev --app "project name"       
