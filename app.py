@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_socketio import SocketIO, send, emit
 
 import os
 
@@ -9,6 +10,8 @@ uri = os.getenv("REAL_DATABASE_URL")  # or other relevant config var
 # rest of connection code using the connection string `uri`
 
 app = Flask(__name__)
+socketio = SocketIO(app)
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
@@ -62,5 +65,15 @@ def usersdata():
 
     return render_template("usersdata.html" ,  user_data = User.query.all())
 
+
+@socketio.on('new_message')
+def handle_new_message(message):
+    print("New message recieved: ", message)
+    # Broadcast the messsage to all connected clients.
+    emit("new_message_received", message, broadcast=True)
+
+
 if __name__ == '__main__':
-    app.run(debug=True, port=1602)
+    socketio.run(app, host="https://a-game-of-space.herokuapp.com")
+	
+    #app.run(debug=True, port=1602)
