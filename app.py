@@ -70,9 +70,11 @@ def mgame_page():
     return render_template("mgame.html")
 
 
-@app.route('/mgameintro')
-def mgame_page_intro():
-    return render_template("mgameintro.html")
+@app.route('/mgameintro', methods=['GET', 'POST'])
+def mgameintro_page():
+    if request.method == 'POST' and 'familyname' in request.form:
+            render_template("mgame.html", familyname=familyname)
+        
 
 
 @socketio.on('new_message')
