@@ -70,6 +70,10 @@ def mgame_page():
     return render_template("mgame.html")
 
 
+@app.route('/mgameintro')
+def mgame_page_intro():
+    return render_template("mgameintro.html")
+
 
 @socketio.on('new_message')
 def handle_new_message(message):
