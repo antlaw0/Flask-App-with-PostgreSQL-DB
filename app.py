@@ -65,6 +65,11 @@ def usersdata():
 
     return render_template("usersdata.html" ,  user_data = User.query.all())
 
+@app.route('/mgame')
+def mgame_page():
+    return render_template("mgame.html")
+
+
 
 @socketio.on('new_message')
 def handle_new_message(message):
